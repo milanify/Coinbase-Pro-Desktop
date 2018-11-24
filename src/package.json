@@ -1,0 +1,21 @@
+{
+  "name": "google-keep-desktop",
+  "version": "1.0.0",
+  "description": "Desktop application for Google Keep",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "google",
+    "keep",
+    "desktop",
+    "application"
+  ],
+  "author": "milan102",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^3.0.10"
+  }
+}
