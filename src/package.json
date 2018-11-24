@@ -14,7 +14,7 @@
     "application"
   ],
   "author": "milan102",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "electron": "^3.0.10"
   }
