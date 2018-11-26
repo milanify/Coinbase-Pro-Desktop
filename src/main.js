@@ -6,13 +6,13 @@ let win
 
 function createWindow () {
   // Create the browser window.
-  win = new BrowserWindow({ width: 800, height: 600 })
+  win = new BrowserWindow({ width: 900, height: 675, webPreferences: { nodeIntegration: false }})
 
   // and load the index.html of the app.
-  win.loadFile('index.html')
+  win.loadURL('https://pro.coinbase.com/trade/BTC-USD')
 
   // Open the DevTools.
-  win.webContents.openDevTools()
+  //win.webContents.openDevTools()
 
   // Emitted when the window is closed.
   win.on('closed', () => {

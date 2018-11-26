@@ -1,15 +1,20 @@
 {
-  "name": "google-keep-desktop",
+  "name": "coinbase-pro-desktop",
   "version": "1.0.0",
-  "description": "Desktop application for Google Keep",
+  "description": "Desktop application for Coinbase Pro",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "google",
-    "keep",
+    "coinbase",
+    "pro",
+    "gdax",
+    "bitcoin",
+    "btc",
+    "ethereum",
+    "eth",
     "desktop",
     "application"
   ],
