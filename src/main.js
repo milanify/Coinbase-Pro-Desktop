@@ -1,4 +1,5 @@
-const { app, BrowserView, BrowserWindow } = require('electron')
+const electron = require('electron')
+const { app, BrowserView, BrowserWindow } = electron
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -8,15 +9,15 @@ let win2
 let win3
 
 function createWindow () {
+  const {width, height} = electron.screen.getPrimaryDisplay().workAreaSize
 
-  win = new BrowserWindow({ width: 1600, height: 1000, webPreferences: { nodeIntegration: false }})
-  //win.loadFile('index.html')
+  win = new BrowserWindow({ width: width, height: height, webPreferences: { nodeIntegration: false }})
 
   // Create the browser window.
   //win = new BrowserWindow({ width: 1400, height: 1000, webPreferences: { nodeIntegration: false }})
 
   // and load the index.html of the app.
-  //win.loadURL('https://pro.coinbase.com/trade/BTC-USD')
+  win.loadURL('https://pro.coinbase.com/trade/BTC-USD')
 
   // Open the DevTools.
   //win.webContents.openDevTools()
@@ -28,22 +29,6 @@ function createWindow () {
     // when you should delete the corresponding element.
     win = null
   })
-
-  let winX = win.getPosition()[0]
-  let winY = win.getPosition()[1] + 20
-
-  win1 = new BrowserWindow({ width: 760, height: 1000, webPreferences: { nodeIntegration: false }, parent: win, frame: false})
-  win1.loadURL('https://pro.coinbase.com/trade/BTC-USD')
-  win1.setPosition(winX, winY)
-
-  win2 = new BrowserWindow({ width: 400, height: 1000, webPreferences: { nodeIntegration: false }, parent: win, frame: false})
-  win2.loadURL('https://pro.coinbase.com/trade/BTC-USD')
-  win2.setPosition(winX + 760, winY)
-
-  win3 = new BrowserWindow({ width: 400, height: 1000, webPreferences: { nodeIntegration: false }, parent: win, frame: false})
-  win3.loadURL('https://pro.coinbase.com/trade/BTC-USD')
-  win3.setPosition(winX + 1160, winY)
-
 }
 
 // This method will be called when Electron has finished
