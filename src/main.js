@@ -11,16 +11,16 @@ let win3
 function createWindow () {
   const {width, height} = electron.screen.getPrimaryDisplay().workAreaSize
 
-  win = new BrowserWindow({ width: width, height: height, webPreferences: { nodeIntegration: false }})
+  win = new BrowserWindow({ width: width,
+    height: height,
+    webPreferences: { nodeIntegration: false }
+  })
 
   // Create the browser window.
   //win = new BrowserWindow({ width: 1400, height: 1000, webPreferences: { nodeIntegration: false }})
 
-  // and load the index.html of the app.
+  // Load Coinbase Pro
   win.loadURL('https://pro.coinbase.com/trade/BTC-USD')
-
-  // Open the DevTools.
-  //win.webContents.openDevTools()
 
   // Emitted when the window is closed.
   win.on('closed', () => {
