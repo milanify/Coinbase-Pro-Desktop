@@ -11,39 +11,42 @@ function createWindow () {
   const {width, height} = electron.screen.getPrimaryDisplay().workAreaSize
   const sidebarWidth = 75
 
-  // Create the browser window.
+  // Create the application window.
   win = new BrowserWindow({ width: width,
     height: height,
+    minWidth: 400 + sidebarWidth,
+    minHeight: 500,
     webPreferences: { nodeIntegration: false },
   })
 
-  //win.loadURL('https://pro.coinbase.com/trade/BTC-USD')
-
-  let winX = win.getPosition()[0]
-  let winY = win.getPosition()[1]
-  // Create a sidebar similar to Discord's
+  // Create a sidebar similar to Discord's.
   sidebarView = new BrowserView({
+    backgroundColor: "#2f3d45",
     webPreferences: {
       nodeIntegration: false
     }
   })
   win.setBrowserView(sidebarView)
-  sidebarView.setBounds({ x: 0, y: 0, width: sidebarWidth, height: height })
+  sidebarView.setBounds({ x: 0,
+    y: 0,
+    width: sidebarWidth,
+    height: height })
   sidebarView.setAutoResize({ width: true, height: true})
-  sidebarView.webContents.loadFile('index.html')
+  sidebarView.webContents.loadFile('sidebar.html')
 
+  // Load the Coinbase Pro
   mainView = new BrowserView({
     webPreferences: {
       nodeIntegration: false
     }
   })
   win.setBrowserView(mainView)
-  mainView.setBounds({ x: sidebarWidth, y: 0, width: width - sidebarWidth, height: height })
+  mainView.setBounds({ x: sidebarWidth,
+    y: 0,
+    width: width - sidebarWidth,
+    height: height })
   mainView.setAutoResize({ width: true, height: true})
   mainView.webContents.loadURL('https://pro.coinbase.com/trade/BTC-USD')
-
-
-
 
   // Emitted when the window is closed.
   win.on('closed', () => {
