@@ -4,23 +4,46 @@ const { app, BrowserView, BrowserWindow } = electron
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win
-let win1
-let win2
-let win3
+let mainView
+let sidebarView
 
 function createWindow () {
   const {width, height} = electron.screen.getPrimaryDisplay().workAreaSize
-
-  win = new BrowserWindow({ width: width,
-    height: height,
-    webPreferences: { nodeIntegration: false }
-  })
+  const sidebarWidth = 75
 
   // Create the browser window.
-  //win = new BrowserWindow({ width: 1400, height: 1000, webPreferences: { nodeIntegration: false }})
+  win = new BrowserWindow({ width: width,
+    height: height,
+    webPreferences: { nodeIntegration: false },
+  })
 
-  // Load Coinbase Pro
-  win.loadURL('https://pro.coinbase.com/trade/BTC-USD')
+  //win.loadURL('https://pro.coinbase.com/trade/BTC-USD')
+
+  let winX = win.getPosition()[0]
+  let winY = win.getPosition()[1]
+  // Create a sidebar similar to Discord's
+  sidebarView = new BrowserView({
+    webPreferences: {
+      nodeIntegration: false
+    }
+  })
+  win.setBrowserView(sidebarView)
+  sidebarView.setBounds({ x: 0, y: 0, width: sidebarWidth, height: height })
+  sidebarView.setAutoResize({ width: true, height: true})
+  sidebarView.webContents.loadFile('index.html')
+
+  mainView = new BrowserView({
+    webPreferences: {
+      nodeIntegration: false
+    }
+  })
+  win.setBrowserView(mainView)
+  mainView.setBounds({ x: sidebarWidth, y: 0, width: width - sidebarWidth, height: height })
+  mainView.setAutoResize({ width: true, height: true})
+  mainView.webContents.loadURL('https://pro.coinbase.com/trade/BTC-USD')
+
+
+
 
   // Emitted when the window is closed.
   win.on('closed', () => {
