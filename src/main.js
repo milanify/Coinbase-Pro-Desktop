@@ -5,7 +5,6 @@ const { app, BrowserView, BrowserWindow } = electron
 // be closed automatically when the JavaScript object is garbage collected.
 let win
 let mainView
-let sidebarView
 
 function createWindow () {
   const {width, height} = electron.screen.getPrimaryDisplay().workAreaSize
@@ -19,22 +18,9 @@ function createWindow () {
     webPreferences: { nodeIntegration: false },
   })
 
-  // Create a sidebar similar to Discord's.
-  sidebarView = new BrowserView({
-    backgroundColor: "#2f3d45",
-    webPreferences: {
-      nodeIntegration: false
-    }
-  })
-  win.setBrowserView(sidebarView)
-  sidebarView.setBounds({ x: 0,
-    y: 0,
-    width: sidebarWidth,
-    height: height })
-  sidebarView.setAutoResize({ width: true, height: true})
-  sidebarView.webContents.loadFile('sidebar.html')
+  win.loadFile('sidebar.html')
 
-  // Load the Coinbase Pro
+  // Load the Coinbase Pro, offset by the sidebar
   mainView = new BrowserView({
     webPreferences: {
       nodeIntegration: false
