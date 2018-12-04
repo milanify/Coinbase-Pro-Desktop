@@ -7,3 +7,10 @@ body {
 div.content {
   display: inline-block;
 }
+
+div.icon {
+  height: 50px;
+  max-height: 50px;
+  max-width: 50px;
+  width: 50px;
+}
