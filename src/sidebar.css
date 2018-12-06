@@ -10,6 +10,9 @@ div.content {
 
 div.icon {
   height: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 4px;
   max-height: 50px;
   max-width: 50px;
   width: 50px;
