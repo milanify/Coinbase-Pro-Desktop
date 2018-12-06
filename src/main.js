@@ -18,6 +18,7 @@ function createWindow () {
     webPreferences: { nodeIntegration: false },
   })
 
+  // Load the sidebar
   win.loadFile('sidebar.html')
 
   // Load the Coinbase Pro, offset by the sidebar
