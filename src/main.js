@@ -1,5 +1,5 @@
 const electron = require('electron');
-const { app, BrowserView, BrowserWindow, Menu } = electron;
+const { app, BrowserView, BrowserWindow } = electron;
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -35,10 +35,6 @@ function createWindow () {
   mainView.setAutoResize({ width: true, height: true});
   mainView.webContents.loadURL('https://pro.coinbase.com/trade/BTC-USD');
 
-  // Build and set main menu
-  //const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
-  //Menu.setApplicationMenu(mainMenu);
-
   // Emitted when the window is closed.
   win.on('closed', () => {
     // Dereference the window object, usually you would store windows
@@ -46,21 +42,10 @@ function createWindow () {
     // when you should delete the corresponding element.
     win = null
   });
+
+  require('./menu.js');
 }
 
-const mainMenuTemplate = [
-  {
-    label: 'File',
-    submenu: [
-      {
-        label: 'Quit',
-        click() {
-          app.quit();
-        }
-      }
-    ]
-  }
-];
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
