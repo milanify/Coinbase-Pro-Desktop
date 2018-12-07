@@ -1,14 +1,14 @@
-const electron = require('electron')
-const { app, BrowserView, BrowserWindow } = electron
+const electron = require('electron');
+const { app, BrowserView, BrowserWindow, Menu } = electron;
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let win
-let mainView
+let win;
+let mainView;
 
 function createWindow () {
-  const {width, height} = electron.screen.getPrimaryDisplay().workAreaSize
-  const sidebarWidth = 75
+  const {width, height} = electron.screen.getPrimaryDisplay().workAreaSize;
+  const sidebarWidth = 75;
 
   // Create the application window.
   win = new BrowserWindow({ width: width,
@@ -16,25 +16,28 @@ function createWindow () {
     minWidth: 400 + sidebarWidth,
     minHeight: 500,
     webPreferences: { nodeIntegration: false },
-  })
-
+  });
 
   // Load the sidebar
-  win.loadFile('sidebar.html')
+  win.loadFile('sidebar.html');
 
   // Load the Coinbase Pro, offset by the sidebar
   mainView = new BrowserView({
     webPreferences: {
       nodeIntegration: false
     }
-  })
-  win.setBrowserView(mainView)
+  });
+  win.setBrowserView(mainView);
   mainView.setBounds({ x: sidebarWidth,
     y: 0,
     width: width - sidebarWidth,
-    height: height })
-  mainView.setAutoResize({ width: true, height: true})
-  mainView.webContents.loadURL('https://pro.coinbase.com/trade/BTC-USD')
+    height: height });
+  mainView.setAutoResize({ width: true, height: true});
+  mainView.webContents.loadURL('https://pro.coinbase.com/trade/BTC-USD');
+
+  // Build and set main menu
+  //const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
+  //Menu.setApplicationMenu(mainMenu);
 
   // Emitted when the window is closed.
   win.on('closed', () => {
@@ -42,13 +45,27 @@ function createWindow () {
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     win = null
-  })
+  });
 }
+
+const mainMenuTemplate = [
+  {
+    label: 'File',
+    submenu: [
+      {
+        label: 'Quit',
+        click() {
+          app.quit();
+        }
+      }
+    ]
+  }
+];
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow)
+app.on('ready', createWindow);
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
@@ -57,7 +74,7 @@ app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit()
   }
-})
+});
 
 app.on('activate', () => {
   // On macOS it's common to re-create a window in the app when the
@@ -65,7 +82,4 @@ app.on('activate', () => {
   if (win === null) {
     createWindow()
   }
-})
-
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.
+});
