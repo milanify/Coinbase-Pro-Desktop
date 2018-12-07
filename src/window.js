@@ -1,4 +1,27 @@
-function openWindow() {
-  var url = 'https://pro.coinbase.com/'
+function openWindow(url) {
   window.open(url,"","height=650,width=1000,frame=true,show=true");
 }
+
+document.getElementById("coinmarketcap").addEventListener("click", function() {
+  openWindow("https://coinmarketcap.com/");
+});
+
+document.getElementById("cryptowatch").addEventListener("click", function() {
+  openWindow("https://cryptowat.ch/");
+});
+
+document.getElementById("googlesearch").addEventListener("click", function() {
+  openWindow("https://www.google.com//");
+});
+
+document.getElementById("googlesheets").addEventListener("click", function() {
+  openWindow("https://docs.google.com/spreadsheets/u/0/");
+});
+
+document.getElementById("wolframalpha").addEventListener("click", function() {
+  openWindow("https://www.wolframalpha.com/");
+});
+
+document.getElementById("ccowl").addEventListener("click", function() {
+  openWindow("https://www.ccowl.com/news/");
+});
