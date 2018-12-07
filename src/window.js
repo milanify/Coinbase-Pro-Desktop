@@ -1,5 +1,5 @@
 function openWindow(url) {
-  window.open(url,"","height=650,width=1000,frame=true,show=true");
+  window.open(url,"","width=1024,height=768,frame=true,show=true");
 }
 
 document.getElementById("coinmarketcap").addEventListener("click", function() {
