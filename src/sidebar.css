@@ -17,3 +17,12 @@ div.icon {
   max-width: 50px;
   width: 50px;
 }
+
+.icon {
+	opacity: 1;
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.icon:hover {
+	opacity: .5;
+}
