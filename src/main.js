@@ -31,7 +31,7 @@ function createWindow () {
   mainView.setBounds({ x: sidebarWidth,
     y: 0,
     width: width - sidebarWidth,
-    height: height });
+    height: height - 50 });
   mainView.setAutoResize({ width: true, height: true});
   mainView.webContents.loadURL('https://pro.coinbase.com/trade/BTC-USD');
 
