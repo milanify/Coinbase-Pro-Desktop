@@ -15,7 +15,9 @@ function createWindow () {
     height: height,
     minWidth: 400 + sidebarWidth,
     minHeight: 500,
-    webPreferences: { nodeIntegration: false },
+    webPreferences: {
+      nodeIntegration: false
+    }
   });
 
   // Load the sidebar
@@ -41,6 +43,7 @@ function createWindow () {
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     win = null;
+    mainView = null;
   });
 
   require('./menu.js');
