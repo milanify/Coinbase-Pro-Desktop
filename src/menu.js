@@ -1,4 +1,4 @@
-const {Menu, session} = require('electron')
+const {Menu} = require('electron')
 const electron = require('electron')
 const app = electron.app
 
@@ -92,7 +92,7 @@ const template = [
 ]
 
 if (process.platform === 'darwin') {
-  const name = app.getName()
+  const name = app.getName();
   template.unshift({
     label: name,
     submenu: [
@@ -142,7 +142,7 @@ if (process.platform === 'darwin') {
         }
       ]
     }
-  )
+  );
   // Window menu.
   template[3].submenu = [
     {
