@@ -32,6 +32,7 @@
     "electron": "^3.0.10",
     "electron-builder-squirrel-windows": "^20.38.2",
     "electron-installer-debian": "^1.0.0",
+    "electron-installer-dmg": "^2.0.0",
     "electron-packager": "^13.0.0"
   }
 }
