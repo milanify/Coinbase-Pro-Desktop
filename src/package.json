@@ -1,11 +1,17 @@
 {
   "name": "coinbase-pro-desktop",
+  "productName": "Coinbase Pro Desktop",
   "version": "1.0.0",
   "description": "Desktop application for Coinbase Pro",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=icons/mac/bitcoin.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager . coinbase-pro-desktop --overwrite --asar=true --platform=win32 --arch=ia32 --icon=icons/win/bitcoin.ico --prune=true --out=release-builds --version-string.CompanyName=\"github.com/milan102\" --version-string.FileDescription=\"Desktop application for Coinbase Pro\" --version-string.ProductName=\"Coinbase Pro Desktop\"",
+    "package-linux": "electron-packager . coinbase-pro-desktop --overwrite --asar=true --platform=linux --arch=x64 --icon=icons/png/1024x1024.png --prune=true --out=release-builds",
+    "create-installer-mac": "electron-installer-dmg ./release-builds/Coinbase\\ Pro\\ Desktop-darwin-x64/Coinbase\\ Pro\\ Desktop.app coinbase-pro-desktop --out=release-builds --overwrite --icon=icons/mac/bitcoin.icns",
+    "create-installer-debian": "electron-installer-debian --src release-builds/coinbase-pro-desktop-linux-x64/ --arch amd64 --config debian.json"
   },
   "keywords": [
     "coinbase",
@@ -24,6 +30,8 @@
   "license": "MIT",
   "devDependencies": {
     "electron": "^3.0.10",
+    "electron-builder-squirrel-windows": "^20.38.2",
+    "electron-installer-debian": "^1.0.0",
     "electron-packager": "^13.0.0"
   }
 }
