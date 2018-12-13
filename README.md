@@ -22,4 +22,4 @@ or [*Download installers and standalone files here*](https://sourceforge.net/pro
 
 ## Notes
 
-*Special thanks to https://icons8.com/  for providing a free app image and https://github.com/crilleengvall/electron-tutorial-app for the Electron tutorials
+*Special thanks to https://icons8.com/  for providing a free app image and https://github.com/crilleengvall/electron-tutorial-app for the Electron tutorials*
